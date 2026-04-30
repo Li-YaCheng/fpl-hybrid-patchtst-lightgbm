@@ -14,6 +14,16 @@ This repository is the **paper-aligned reproduction package** for our Fantasy Pr
 
 If you want a single entrypoint summary, see `PIPELINE_REPRODUCE.md`.
 
+### 🔬 Key Results (Paper)
+
+- **SOTA F1**: 0.8122 (PatchTST–LightGBM Hybrid, L=30)
+- **vs. Pure GBDT**: +0.32% (0.8081 → 0.8122)
+- **vs. End-to-end Transformer**: +0.81% (0.8041 → 0.8122)
+- **Holdout Season (2025–26)**: well-calibrated probabilities with Top-10 uplift
+- **Interpretability**: SHAP-validated two-stage mechanism (PatchTST probability dominates, GBDT calibrates)
+
+**Core insight**: long-window temporal encoding (L=30) + uncertainty-aware GBDT fusion outperforms both pure statistical ML and naive deep learning.
+
 ### Quickstart
 
 From the repository root:
@@ -57,15 +67,18 @@ pip install -r requirements.txt
 
 ### Reproduce the full pipeline (paper-aligned)
 
-Run from the repository root:
+Run from the repository root (~8–15 min on CPU; ~3–5 min with GPU for Stage-1):
 
 ```bash
+# Step 1: Data preparation (~1 min)
 python code/data_loader_paper20d.py
 python code/sequence_generator_paper20d.py
 
+# Step 2: Main experiments (~5–10 min)
 python code/run_table4_paper_ablation.py
 python code/run_table5_paper_comparison.py
 
+# Step 3: Holdout evaluation + SHAP (~2–4 min)
 python code/run_predict_holdout_paper.py
 python code/make_table6_holdout_examples.py
 
@@ -74,12 +87,21 @@ python code/shap_paper_analysis.py
 
 ### Repository structure
 
-- `code/`: all reproduction scripts (paper-aligned entry points)
-- `data/`: small inputs; `data/processed/` is generated
-- `artifacts/`: generated model artifacts and NPZ bundles
-- `tables/`: generated CSV tables
-- `figures/`: generated PNG figures
-- `local_only/`: local large scratch (ignored by `.gitignore`)
+| Path | Purpose |
+|---|---|
+| `code/` | Paper-aligned reproduction scripts |
+| `code/data_loader_paper20d.py` | Build 20D feature set + season-based splits |
+| `code/sequence_generator_paper20d.py` | Leakage-safe L=30 sequence generation |
+| `code/run_table4_paper_ablation.py` | Reproduce Table 4 (Ablation Study) |
+| `code/run_table5_paper_comparison.py` | Reproduce Table 5 (Cross-model Comparison) |
+| `code/run_predict_holdout_paper.py` | 2025–26 holdout season prediction |
+| `code/make_table6_holdout_examples.py` | Reproduce Table 6 holdout examples |
+| `code/shap_paper_analysis.py` | Generate SHAP figures (Fig 5–7) + triptych |
+| `data/` | Small inputs; `data/processed/` is generated (gitignored) |
+| `artifacts/` | Model artifacts and NPZ bundles (gitignored) |
+| `tables/` | Generated result CSVs (Table 4/5/6) (gitignored) |
+| `figures/` | Generated PNG figures (gitignored) |
+| `local_only/` | Large scratch space (gitignored) |
 
 ### Outputs
 
@@ -94,6 +116,12 @@ Notes:
 
 - `data/predict_25_26_hybrid_predictions_patchtst_seed42_padpred.csv` is included as an example input used by some downstream figure scripts.
 - Larger intermediate outputs should go into `local_only/` (ignored by `.gitignore`).
+
+### Paper
+
+- **Venue**: DSAI (EI Conference), 2026
+- **Preprint**: (add arXiv/DOI link when available)
+- **Key figure**: two-stage Hybrid architecture (add a PNG link here if you export it, e.g. `figures/model_architecture_final.png`)
 
 ### Citation
 
