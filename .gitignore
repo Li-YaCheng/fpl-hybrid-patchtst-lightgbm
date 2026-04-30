@@ -1,0 +1,24 @@
+# Keep GitHub upload light: treat outputs as generated.
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtualenv / conda local files
+.venv/
+.python-version
+
+# Generated outputs
+artifacts/
+figures/
+tables/
+data/processed/
+
+# Local-only scratch
+local_only/
+*.log
+*.tmp
+

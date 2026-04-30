@@ -1,0 +1,21 @@
+name: fpl-upload
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  # Pin NumPy <2 to avoid binary ABI breakage with common ML libs.
+  - numpy<2
+  - pip
+  - pip:
+      - Pillow
+      - pandas
+      - scikit-learn
+      - joblib
+      - lightgbm
+      - shap
+      - matplotlib
+      - seaborn
+      - tensorflow
+      - tqdm
+      - pyarrow
+

@@ -1,0 +1,12 @@
+numpy<2
+Pillow
+pandas
+scikit-learn
+joblib
+lightgbm
+shap
+matplotlib
+seaborn
+tensorflow
+tqdm
+pyarrow

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or the accompanying data pipeline, please cite the DSAI paper and the Official FPL API."
+title: "PatchTST-LightGBM Hybrid for Fantasy Premier League High-Scoring Player Prediction (reproduction code)"
+type: software
+license: MIT
+url: "https://github.com/<your-username>/<your-repo>"
+repository-code: "https://github.com/<your-username>/<your-repo>"
+keywords:
+  - fantasy-premier-league
+  - time-series
+  - transformer
+  - lightgbm
+  - shap
+  - sports-analytics
+preferred-citation:
+  type: conference-paper
+  title: "PatchTST-LightGBM Hybrid for Fantasy Premier League High-Scoring Player Prediction"
+  conference:
+    name: "DSAI"
+  year: 2026
+references:
+  - type: web
+    title: "Official FPL API"
+    url: "https://fantasy.premierleague.com/api/"
+    year: 2025
