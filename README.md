@@ -130,11 +130,12 @@ Software citation metadata is provided in `CITATION.cff`.
 If you want a BibTeX block for your paper (fill in authors / proceedings volume if applicable):
 
 ```bibtex
-@inproceedings{<your_key>,
+@inproceedings{Li2026PatchTST,
   title     = {PatchTST-LightGBM Hybrid for Fantasy Premier League High-Scoring Player Prediction},
-  author    = {<Authors>},
-  booktitle = {Proceedings of DSAI},
+  author    = {Yaxuan Li},
+  booktitle = {Proceedings of the 3rd International Conference on Digital Society and Artificial Intelligence (DSAI)},
   year      = {2026},
+  note      = {Accepted for publication}
 }
 ```
 
